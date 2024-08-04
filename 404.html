@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哎呀！404 錯誤</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        #current-url {
+            font-weight: bold;
+            color: #ff6347;
+        }
+        #explanation {
+            font-style: italic;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>哎呀!404 錯誤</h1>
+        <p>你正在尋找的頁面似乎迷路了：</p>
+        <p id="current-url"></p>
+        <p id="explanation">404 錯誤就像是網際網路的"迷途羔羊"。它告訴我們,你想去的地方確實存在,但可能躲起來了,或者正在度假！</p>
+        <button onclick="getRandomExplanation()">了解更多關於404</button>
+    </div>
+
+    <script>
+        document.getElementById('current-url').textContent = window.location.href;
+
+        const explanations = [
+            "404錯誤就像是你打開冰箱找啤酒,但裡面只有蔬菜。網頁存在,只是不在你期望的地方！",
+            "想像一下,404就是互聯網的'查無此人'。你敲了門,但裡面沒人應答。",
+            "404錯誤就像是你去圖書館找一本書,但它被借走了。內容還在,只是暫時無法取得。",
+            "把404想像成迷宮中的死胡同。你知道出口在某處,只是還沒找到正確的路！",
+            "404就像是收到一封沒有內容的信。信封在那裡,但裡面什麼都沒有。"
+        ];
+
+        function getRandomExplanation() {
+            const randomIndex = Math.floor(Math.random() * explanations.length);
+            document.getElementById('explanation').textContent = explanations[randomIndex];
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <meta charset="utf-8">
+        <link rel="stylesheet"  href="main.css">
+        <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
+        <title>新北市政府教育局單一</title>
+    </head>
+<body >
+    <!--<div style="background-color: aliceblue;width: 390px;height: 421px;opacity: 0.4;border-radius: 20px;"></div>-->
+    <div style="width: 390px;height: 595px;">
+    <img src="GEAR.png" id="GEAR_D" class="GEAR-png" style="width: 30px;position: absolute;height: 30px; top: 30px;right: 370px;">
+    <h3 id="Sign-On_txt"><i>Single Sign-On</i></h3>
+    <img src="login-logo.png" alt="教育部" style="margin-left: 80px;" />
+    <br>
+    <br>
+    <br>
+        <hr style="width: 300px;position: absolute;top: 260px;right: 80px;" >
+        <!--分隔線-->
+        <input  type="text" title="校務行政系統帳號" id="username"   >
+        <br>
+        <br>
+        <input  type="password" title="校務行政系統密碼" id="password"  />
+        <br>
+        <br>
+        <button id="login_button" style="border-radius:50px ;background-color:#f0d455;width: 312px;height: 50px;color: aliceblue;-webkit-text-stroke: 0.3px black;font-size: 15px;"><b>登入</b></button>
+        <style>
+            #pig{
+            background-color: aliceblue;
+            width: 390px;
+            height: 421px;
+            opacity: 0.2;
+            border-radius: 20px;
+            pointer-events: none;
+            position: absolute;
+            top: 45%;
+            left: 40%;
+            transform: translate(-50%,-50%);
+            }
+        </style> 
+        <!-- 透明板子 -->
+        <div id="pig">
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
