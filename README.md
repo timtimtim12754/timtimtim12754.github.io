@@ -1,2 +1,4 @@
-https://timtimtim12754.github.io/home/main.html
 
+# wed page
+
+[https://timtimtim12754.github.io](https://timtimtim12754.github.io)
