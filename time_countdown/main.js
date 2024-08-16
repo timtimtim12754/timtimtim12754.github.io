@@ -14,7 +14,7 @@ if (m_day===null||title ===null||m_time===null){
 //把標題數為title
 var elements = document.getElementsByClassName("my_title");
 for(var i = 0; i < elements.length; i++) {
-    elements[i].innerHTML = title;
+    elements[i].innerText = title;
 }
 function updateTime(time_pass_f){
     var n_day=Math.floor(time_pass_f/(3600*24))
