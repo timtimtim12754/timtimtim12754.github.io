@@ -1,0 +1,94 @@
+
+textarea{
+    resize: none;
+    color: black;
+    border: 2px solid black;
+}
+textarea:disabled{
+    background-color: azure;
+}
+.backgroundGray{
+    position: fixed; /* 固定位置 */
+    z-index: 1; /* 置於頂層 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* 黑色背景透明度 */
+}
+.clearBody {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid black;
+    padding: 5px;
+    overflow: auto;
+    height: 80%;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+}
+#StartTest{
+    position: absolute;
+
+    top: 50%;
+    
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+    overflow: auto;
+    height: 70%;
+}
+
+#TestNowChick{
+    height: 90%;
+}
+#TestNow{
+    position: absolute;
+
+    top: 40%;
+    
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+    
+}
+.tool{
+    border-radius: 80px;
+    size: 2px;
+    background: #48c907b6;
+    padding: 30px 30px; 
+}
+.tool:hover {
+    background: #48c907b6; /* 改變漸變背景方向 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* 增強陰影效果 */
+    transform: translateY(-5px); /* 設置向上移動的動畫效果 */
+}
+#TestNow_Name {
+    border: 5px solid black;
+}
+
+#stopButton{
+    padding: 20px 20px;
+    position: absolute;
+    top:60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#settingsImage{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 5px;
+    top:5px
+}
+.middleOnTop{
+    position: absolute;
+    top: 5%;
+    
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+}

@@ -1,0 +1,30 @@
+/* 定義按鈕的基礎樣式 */
+button {
+    background: linear-gradient(45deg, #ff6b6b, #f06595); /* 設置漸變背景 */
+    border: none; /* 移除邊框 */
+    border-radius: 50px; /* 設置圓角 */
+    color: white; /* 設置文字顏色 */
+    padding: 15px 30px; /* 設置內邊距 */
+    text-align: center; /* 文字居中 */
+    text-decoration: none; /* 移除文字裝飾 */
+    display: inline-block; /* 讓按鈕成為內聯塊元素 */
+    font-size: 16px; /* 設置文字大小 */
+    font-weight: bold; /* 設置文字粗細 */
+    cursor: pointer; /* 設置滑鼠指針 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 設置陰影效果 */
+    transition: all 0.3s ease; /* 設置過渡效果 */
+}
+
+/* 定義按鈕在滑鼠懸停時的樣式 */
+button:hover {
+    background: linear-gradient(45deg, #f06595, #ff6b6b); /* 改變漸變背景方向 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* 增強陰影效果 */
+    transform: translateY(-3px); /* 設置向上移動的動畫效果 */
+}
+
+/* 定義按鈕在按下時的樣式 */
+button:active {
+    transform: translateY(-1px); /* 設置按下時的動畫效果 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 減弱陰影效果 */
+}
+

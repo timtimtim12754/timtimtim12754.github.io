@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="自動考聽寫神器" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/button.css" />
+  <link rel="stylesheet" href="css/phone.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <link rel="shortcut icon" href="image/ico.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <title>自動考聽寫</title>
+</head>
+<body>
+  <img src="image/settings.png" id="settingsImage" onclick="OpenSettings()">
+  <script>
+    // main.js
+    window.onerror = function (message, source, lineno, colno, error) {
+      Swal.fire({
+        icon: 'error',
+        title: '發現程式錯誤',
+        html: `<p>錯誤訊息:${message}<p>
+        <p>來源:${source}<p>
+        <p>錯誤對象:${error}<p>`,
+    })
+    };
+  </script>
+  <script src="javascript/function.js"></script>
+  <script>var vConsole = new VConsole();</script>
+  <button id="addNewTest">建立新考試</button>
+  <noscript>
+    <div id="noscript" class="backgroundGray">
+      <div id="openJS">
+        <h1 style="color: red;" class="clearBody">請允許使用javascript否則網站無法正常運作!</h1>
+      </div>
+    </div>
+  </noscript>
+  <div id="inputWordsModal" class="backgroundGray" hidden>
+    <div id="inputWords" class="clearBody">
+      <textarea id="testName" placeholder="請輸入考試名稱"></textarea>
+      </textarea>
+      <br />
+      <br />
+      <label>
+        語言：
+        <select name="語言:" id="language">
+          <option value="en">英語</option>
+          <option value="zh" selected>中文</option>
+          <option value="es">西班牙語</option>
+          <option value="fr">法語</option>
+          <option value="de">德語</option>
+          <option value="ja">日語</option>
+          <option value="ru">俄語</option>
+          <option value="ko">韓語</option>
+          <option value="it">義大利語</option>
+          <option value="pt">葡萄牙語</option>
+          <option value="ar">阿拉伯語</option>
+          <option value="hi">印地語</option>
+          <option value="bn">孟加拉語</option>
+          <option value="pa">旁遮普語</option>
+          <option value="jv">爪哇語</option>
+          <option value="mr">馬拉地語</option>
+          <option value="vi">越南語</option>
+        </select>
+      </label>
+      <br>
+      <label>分割方法:
+        <select name="分割方法:" id="splitWord">
+          <option value=" ">用空格</option>
+          <option value="">無</option>
+          <option value=",">用逗號</option>
+        </select>
+      </label>
+      <br>
+      <br>
+      <br>
+      <br>
+      <textarea id="all_words" rows="5" style="width: 80%;" placeholder="請輸入要考的字"></textarea>
+      <p>預覽結果:</p>
+      <textarea id="all_words_see" rows="5" style="width: 80%;" disabled></textarea>
+      <br />
+      <br>
+      <p id="errorText" style="color: red;"></p>
+      <button onclick="CloseInputWordsModal()">取消變更</button>
+      <button id="save">儲存</button>
+    </div>
+  </div>
+  <div id="StartTest">
+    <h1>開始考試</h1>
+    <p>請按左上角新增考試</p>
+    <label>請選擇考試：
+      <select name="請選擇考試" id="TestSwitch">
+      </select>
+    </label>
+    <br>
+    <br>
+    <div id="goTest">
+      <img src="image/pen.png" onclick="edit()" style="width: 70px; height: 70px;">
+      <img src="image/trash.png" onclick="Delete()" style="width: 70px; height: 70px;">
+
+      <br>
+      <br>
+      <label>自動播放
+        <input type="checkbox" id="AutoPlay" checked>
+      </label>
+      <br>
+      <br>
+      <label>單字播放次數:
+        <select name="請選擇考試" id="SayTime">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+
+        </select>
+      </label>
+      <br>
+      <br>
+
+      <label>講話速度:
+        <select name="請選擇考試" id="speed">
+          <option value="0.08">無敵慢</option>
+          <option value="0.2">很慢</option>
+          <option value="0.5">偏慢</option>
+          <option value="1" selected>正常</option>
+          <option value="1.5">偏快</option>
+          <option value="2">超快</option>
+        </select>
+      </label>
+      <br>
+      <br>
+      <button id="TestNowButton">開始考試</button>
+    </div>
+  </div>
+  <div id="TestNowChickModal" hidden class="backgroundGray">
+    <div id="TestNowChick" class="clearBody">
+      <h1 id="TestNow_Name"></h1>
+      <h2>內容:</h2>
+      <textarea id="TestNow_Words" disabled></textarea>
+      <button id="StartTestButton">開始測驗</button>
+      <button style="right: 0; top: 0;position:absolute;" onclick="TestNowChickModal.hidden=true">x</button>
+    </div>
+  </div>
+  <div id="TestNowModal" class="backgroundGray" hidden>
+    <div id="TestNow" class="clearBody">
+      <h1>TestNow</h1>
+      <hr>
+      <p id="Say_Text">即將開始播放……</p>
+      <br>
+      <br>
+      <script>
+        function StopOrOn() {
+          if (stopNow == false) {
+            document.getElementById("stopButton").style.background = "#c907077c"
+            document.getElementById("stopButton").innerText = "▲"
+            stopNow = true
+          } else {
+            document.getElementById("stopButton").style.background = "#48c907b6"
+            document.getElementById("stopButton").innerText = "||"
+            stopNow = false
+          }
+
+        }
+      </script>
+      <button id="stopButton" onclick="StopOrOn()" class="tool">||</button>
+      <br>
+      <br>
+      <button id="closeTestNow" style="position: absolute;top:0;right: 0;" onclick="closeTestNow()">x</button>
+    </div>
+  </div>
+  <div id="settingsModal" hidden class="backgroundGray"> 
+    <div id="settings" class="clearBody">
+      
+      <p style="position: absolute;top:0px;right: 0px;font-size: 50px;margin: 0;" onclick="closeSetting()">✕</p>
+      <div class="middleOnTop">
+      <h1>設定</h1>
+      <label>外觀:
+        <select id="userThemeSettings">
+          <option value="0">瀏覽器預設</option>
+          <option value="1">深色</option>
+          <option value="2">淺色</option>
+        </select>
+      </label>
+      </div>
+    </div>
+  </div>
+  <script src="javascript/main.js"></script>
+  <script src="javascript/addNewTest.js"></script>
+  <script src="javascript/TestNow.js"></script>
+</body>
+</html>
